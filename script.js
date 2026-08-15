@@ -44,7 +44,7 @@
   const dockPills = document.querySelectorAll(".dock-pill");
 
   // =========================================================================
-  // 1. PRELOADER & ASSET CACHING
+  // 1. PRELOADER & ASSET CACHING WITH MULTI-PATH FALLBACK
   // =========================================================================
   function initPreloader() {
     let loadedCount = 0;
@@ -71,26 +71,47 @@
       }
     }
 
+    // Candidate path prefixes
+    const pathPrefixes = ["./frames/", "frames/", "/frames/", "./public/frames/", "/public/frames/"];
+
     // Preload dance frames
     for (let i = 1; i <= TOTAL_FRAMES; i++) {
       const numStr = String(i).padStart(3, "0");
       const img = new Image();
-      img.src = `${FRAME_PREFIX}${numStr}${FRAME_EXT}`;
+      let prefixIdx = 0;
+
       img.onload = () => {
         loadedFrames[i - 1] = img;
         updateProgress();
       };
+
       img.onerror = () => {
-        loadedFrames[i - 1] = img;
-        updateProgress();
+        prefixIdx++;
+        if (prefixIdx < pathPrefixes.length) {
+          img.src = `${pathPrefixes[prefixIdx]}ezgif-frame-${numStr}.jpg`;
+        } else {
+          // Fallback if missing
+          updateProgress();
+        }
       };
+
+      img.src = `${pathPrefixes[0]}ezgif-frame-${numStr}.jpg`;
     }
 
-    // Preload school photo
+    // Preload school photo with fallback
+    const schoolPhotoPaths = ["./images/school-memory.jpg", "images/school-memory.jpg", "/images/school-memory.jpg", "./public/images/school-memory.jpg"];
+    let photoIdx = 0;
     const schoolImg = new Image();
-    schoolImg.src = SCHOOL_PHOTO_SRC;
     schoolImg.onload = updateProgress;
-    schoolImg.onerror = updateProgress;
+    schoolImg.onerror = () => {
+      photoIdx++;
+      if (photoIdx < schoolPhotoPaths.length) {
+        schoolImg.src = schoolPhotoPaths[photoIdx];
+      } else {
+        updateProgress();
+      }
+    };
+    schoolImg.src = schoolPhotoPaths[0];
   }
 
   // =========================================================================

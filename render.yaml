@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: for-vanika-by-preet
+    env: static
+    buildCommand: ""
+    staticPublishPath: .

@@ -1,11 +1,11 @@
 {
-  "name": "tmp-next-app",
+  "name": "rks",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.js",
     "lint": "eslint"
   },
   "dependencies": {

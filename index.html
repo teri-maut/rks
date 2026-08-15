@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Vanika, by Preet • A Cinematic Raksha Bandhan Story</title>
+  <meta name="description" content="A scroll-driven cinematic journey celebrating sisterhood, classical dance, and heartfelt memories for Raksha Bandhan." />
+  <meta name="theme-color" content="#020204" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="For Vanika, by Preet • A Cinematic Raksha Bandhan Story" />
+  <meta property="og:description" content="A scroll-driven cinematic journey celebrating love and classical dance." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- ================================================================= -->
+  <!-- 1. INITIAL CINEMATIC PRELOADER -->
+  <!-- ================================================================= -->
+  <div id="preloader" style="position: fixed; inset: 0; background-color: var(--bg-pure); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease;">
+    <div style="position: absolute; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%); filter: blur(40px);"></div>
+    
+    <div style="position: relative; width: 120px; height: 120px; margin-bottom: 2rem;">
+      <svg width="120" height="120" viewBox="0 0 120 120" style="transform: rotate(-90deg);">
+        <circle cx="60" cy="60" r="52" stroke="rgba(212, 175, 55, 0.12)" stroke-width="3" fill="none" />
+        <circle id="preloader-circle" cx="60" cy="60" r="52" stroke="url(#goldGrad)" stroke-width="3" fill="none" stroke-dasharray="326.7" stroke-dashoffset="326.7" stroke-linecap="round" style="transition: stroke-dashoffset 0.15s ease-out;" />
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f3e5ab" />
+            <stop offset="100%" stop-color="#d4af37" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+        <span id="preloader-pct" class="font-serif" style="font-size: 1.5rem; font-weight: 600; color: var(--gold-light);">0%</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; max-width: 90%; z-index: 2;">
+      <p class="font-serif" style="font-size: 1.4rem; color: var(--text-warm); letter-spacing: 0.04em; margin-bottom: 0.5rem;">Loading memories for Vanika...</p>
+      <p class="font-sans" style="font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase;">Preloading 120 Performance Frames & Photo Vault</p>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- 2. FLOATING CLASSICAL AUDIO PLAYER -->
+  <!-- ================================================================= -->
+  <audio id="audio-player" src="./audio/dance-music.m4a" preload="metadata"></audio>
+  <div class="audio-controller">
+    <button id="audio-toggle" class="audio-btn glass-card" aria-label="Toggle classical music">
+      <div class="equalizer-bars">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span id="audio-label" class="font-sans" style="font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em;">Music</span>
+    </button>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- 3. CANVAS LAYERS (DANCE PERFORMANCE & GOLDEN PARTICLES) -->
+  <!-- ================================================================= -->
+  <div style="position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 2; pointer-events: none; background-color: var(--bg-pure);">
+    <canvas id="dance-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+  </div>
+  <canvas id="particle-canvas" style="position: fixed; inset: 0; pointer-events: none; z-index: 3; opacity: 0.75;"></canvas>
+
+  <!-- ================================================================= -->
+  <!-- 4. MAIN SCROLL CONTAINER & PRESENTATION CARDS -->
+  <!-- ================================================================= -->
+  <main class="story-scroll-track">
+    <div class="story-fixed-viewport">
+
+      <!-- 1. HERO SCENE -->
+      <div id="hero-scene" class="story-card-item" style="max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.25rem; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold-border); color: var(--gold-light); font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">
+          <span>A Brother's Untold Memories</span>
+        </div>
+        <h1 class="font-serif gold-gradient-text" style="font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 700; line-height: 1.12; letter-spacing: -0.01em;">
+          For Vanika, by Preet
+        </h1>
+        <p class="font-sans" style="font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--text-muted); line-height: 1.6; max-width: 580px;">
+          From school day apologies to Rangapravesham stage lights — a story made just for you.
+        </p>
+        <div class="animate-pulse-subtle" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.2rem; padding: 0.45rem 1.4rem; border-radius: var(--radius-full); background: rgba(255, 255, 255, 0.06); border: 1px solid var(--gold-border-subtle); color: var(--gold-light); font-size: 0.88rem; letter-spacing: 0.06em;">
+          <span>Scroll down to relive our memories ↓</span>
+        </div>
+      </div>
+
+      <!-- 2. MEMORY 01: THE 2-DAY APOLOGY -->
+      <div id="mem-1" class="story-card-item glass-card" style="max-width: 540px; width: 100%; left: clamp(1rem, 5vw, 5rem); text-align: left; padding: clamp(1.75rem, 3.5vw, 2.5rem); border: 1px solid var(--gold-border); background: rgba(10, 12, 18, 0.92);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.6rem;">🩹</span>
+            <span class="font-sans" style="padding: 0.25rem 0.75rem; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.18); border: 1px solid var(--gold-border); color: var(--gold-primary); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">
+              Memory 01 • The School Incident
+            </span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase;">By Preet</span>
+        </div>
+        <h2 class="font-serif" style="font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 600; line-height: 1.25; color: var(--text-warm); margin-bottom: 1rem;">
+          The 2-Day Apology
+        </h2>
+        <p class="font-sans" style="font-size: clamp(0.92rem, 1.4vw, 1.05rem); color: var(--text-warm); line-height: 1.75; margin-bottom: 1.25rem; opacity: 0.94;">
+          I still remember our first day of school. That incident happened where your hand got hurt, and I felt so terribly guilty that I kept saying sorry to you continuously for 2 whole days straight! I was so scared that my little sister was in pain.
+        </p>
+        <div style="border-left: 2px solid var(--gold-primary); padding-left: 0.85rem; font-size: 0.92rem; font-style: italic; color: var(--gold-light); line-height: 1.5;">
+          &ldquo;Two whole days of non-stop 'Sorry Vanika' on loop!&rdquo;
+        </div>
+      </div>
+
+      <!-- 3. MEMORY 02: NAME CONFUSION -->
+      <div id="mem-2" class="story-card-item glass-card" style="max-width: 540px; width: 100%; right: clamp(1rem, 5vw, 5rem); text-align: left; padding: clamp(1.75rem, 3.5vw, 2.5rem); border: 1px solid var(--gold-border); background: rgba(10, 12, 18, 0.92);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.6rem;">👶</span>
+            <span class="font-sans" style="padding: 0.25rem 0.75rem; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.18); border: 1px solid var(--gold-border); color: var(--gold-primary); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">
+              Memory 02 • Name Confusion
+            </span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase;">By Preet</span>
+        </div>
+        <h2 class="font-serif" style="font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 600; line-height: 1.25; color: var(--text-warm); margin-bottom: 1rem;">
+          When I Couldn't Say Your Name
+        </h2>
+        <p class="font-sans" style="font-size: clamp(0.92rem, 1.4vw, 1.05rem); color: var(--text-warm); line-height: 1.75; margin-bottom: 1.25rem; opacity: 0.94;">
+          In the early days, I struggled so much to pronounce your name properly! I would keep forgetting it again and again, inventing new versions every time until it finally stuck.
+        </p>
+        <div style="border-left: 2px solid var(--gold-primary); padding-left: 0.85rem; font-size: 0.92rem; font-style: italic; color: var(--gold-light); line-height: 1.5;">
+          &ldquo;Took me forever to get 'Vanika' right!&rdquo;
+        </div>
+      </div>
+
+      <!-- 4. MEMORY 03: CLASSROOM DEPARTURE & ANEMIA -->
+      <div id="mem-3" class="story-card-item glass-card" style="max-width: 540px; width: 100%; left: clamp(1rem, 5vw, 5rem); text-align: left; padding: clamp(1.75rem, 3.5vw, 2.5rem); border: 1px solid var(--gold-border); background: rgba(10, 12, 18, 0.92);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.6rem;">🩺</span>
+            <span class="font-sans" style="padding: 0.25rem 0.75rem; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.18); border: 1px solid var(--gold-border); color: var(--gold-primary); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">
+              Memory 03 • Classroom Departure
+            </span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase;">By Preet</span>
+        </div>
+        <h2 class="font-serif" style="font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 600; line-height: 1.25; color: var(--text-warm); margin-bottom: 1rem;">
+          Checking Up On You With Fingers
+        </h2>
+        <p class="font-sans" style="font-size: clamp(0.92rem, 1.4vw, 1.05rem); color: var(--text-warm); line-height: 1.75; margin-bottom: 1.25rem; opacity: 0.94;">
+          That first time we were sitting together in class during departure, when you felt weak and fell asleep from anemia... I got so worried that I sat beside you showing my fingers, asking 'how many fingers is this?' just to make sure my sister was okay.
+        </p>
+        <div style="border-left: 2px solid var(--gold-primary); padding-left: 0.85rem; font-size: 0.92rem; font-style: italic; color: var(--gold-light); line-height: 1.5;">
+          &ldquo;Counting fingers to make sure you were fine ❤️&rdquo;
+        </div>
+      </div>
+
+      <!-- 5. MEMORY 04: HOME CHAOS -->
+      <div id="mem-4" class="story-card-item glass-card" style="max-width: 540px; width: 100%; right: clamp(1rem, 5vw, 5rem); text-align: left; padding: clamp(1.75rem, 3.5vw, 2.5rem); border: 1px solid var(--gold-border); background: rgba(10, 12, 18, 0.92);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.6rem;">🐕</span>
+            <span class="font-sans" style="padding: 0.25rem 0.75rem; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.18); border: 1px solid var(--gold-border); color: var(--gold-primary); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">
+              Memory 04 • Home Chaos
+            </span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase;">By Preet</span>
+        </div>
+        <h2 class="font-serif" style="font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 600; line-height: 1.25; color: var(--text-warm); margin-bottom: 1rem;">
+          The Dog's Grand Welcome
+        </h2>
+        <p class="font-sans" style="font-size: clamp(0.92rem, 1.4vw, 1.05rem); color: var(--text-warm); line-height: 1.75; margin-bottom: 1.25rem; opacity: 0.94;">
+          From all those past moments to today, the way your dog welcomes you home with absolute chaos and madness... well, let's keep that chaotic story aside for now!
+        </p>
+        <div style="border-left: 2px solid var(--gold-primary); padding-left: 0.85rem; font-size: 0.92rem; font-style: italic; color: var(--gold-light); line-height: 1.5;">
+          &ldquo;Pure unadulterated canine drama at the door.&rdquo;
+        </div>
+      </div>
+
+      <!-- 6. MEMORY 05: THE ICONIC LINE -->
+      <div id="mem-5" class="story-card-item glass-card" style="max-width: 540px; width: 100%; left: clamp(1rem, 5vw, 5rem); text-align: left; padding: clamp(1.75rem, 3.5vw, 2.5rem); border: 1px solid var(--gold-border); background: rgba(10, 12, 18, 0.92);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.6rem;">🎭</span>
+            <span class="font-sans" style="padding: 0.25rem 0.75rem; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.18); border: 1px solid var(--gold-border); color: var(--gold-primary); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">
+              Memory 05 • The Iconic Line
+            </span>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase;">By Preet</span>
+        </div>
+        <h2 class="font-serif" style="font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 600; line-height: 1.25; color: var(--text-warm); margin-bottom: 1rem;">
+          “Jassi, Ghar Ki Yaad Nahi Ayi?!”
+        </h2>
+        <p class="font-sans" style="font-size: clamp(0.92rem, 1.4vw, 1.05rem); color: var(--text-warm); line-height: 1.75; margin-bottom: 1.25rem; opacity: 0.94;">
+          And how on earth could either of us ever forget the most legendary dialogue of all time: “Jassi, ghar ki yaad nahi ayi?!” That line will forever remain rent-free in our sibling vault.
+        </p>
+        <div style="border-left: 2px solid var(--gold-primary); padding-left: 0.85rem; font-size: 0.92rem; font-style: italic; color: var(--gold-light); line-height: 1.5;">
+          &ldquo;An unforgettable inside joke that never gets old!&rdquo;
+        </div>
+      </div>
+
+      <!-- 7. NOSTALGIC SCHOOL PHOTO CARD -->
+      <div id="photo-card" class="story-card-item glass-card" style="max-width: 520px; width: 92%; max-height: 86vh; overflow-y: auto; padding: clamp(1.2rem, 2.5vw, 1.8rem); text-align: center; border: 2px solid var(--gold-primary); background: rgba(10, 12, 18, 0.96); display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0.9rem; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.18); border: 1px solid var(--gold-border); color: var(--gold-primary); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">
+          <span>📸 Classroom Vault • Ryan Days</span>
+        </div>
+
+        <div style="position: relative; width: 100%; border-radius: var(--radius-md); overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.35); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8); background: #000;">
+          <img src="./images/school-memory.jpg" alt="School Memory with Moong Dal" style="width: 100%; height: auto; max-height: 260px; object-fit: cover; display: block;" />
+        </div>
+
+        <div style="padding: 0.85rem 1.25rem; border-radius: var(--radius-md); background: rgba(212, 175, 55, 0.12); border: 1px solid var(--gold-border); width: 100%;">
+          <p class="font-serif" style="font-size: clamp(1.05rem, 2.2vw, 1.3rem); font-weight: 600; color: var(--gold-light); line-height: 1.5; font-style: italic;">
+            &ldquo;mung ki daal khao or mast maggan hoajao and i dont knwo why we all are black in this photo&rdquo;
+          </p>
+        </div>
+      </div>
+
+      <!-- 8. RAKSHA BANDHAN CLIMAX -->
+      <div id="climax-scene" class="story-card-item" style="max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1.25rem; border-radius: var(--radius-full); background: rgba(194, 51, 51, 0.15); border: 1px solid rgba(194, 51, 51, 0.35); color: #ff9999; font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">
+          <span>Raksha Bandhan 2026</span>
+        </div>
+        <h2 class="font-serif gold-gradient-text" style="font-size: clamp(2.6rem, 6vw, 4.8rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">
+          Happy Raksha Bandhan
+        </h2>
+        <p class="font-serif" style="font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: var(--text-warm); line-height: 1.4; max-width: 600px;">
+          To the most talented, resilient, and beloved sister in the world.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1rem;">
+          <div class="glass-card" style="padding: 0.55rem 1.25rem; border-radius: var(--radius-full); font-size: 0.9rem; color: var(--gold-light); border: 1px solid var(--gold-border-subtle);">
+            Always my little sister.
+          </div>
+          <div class="glass-card" style="padding: 0.55rem 1.25rem; border-radius: var(--radius-full); font-size: 0.9rem; color: var(--gold-light); border: 1px solid var(--gold-border-subtle);">
+            Always inspiring.
+          </div>
+          <div class="glass-card" style="padding: 0.55rem 1.25rem; border-radius: var(--radius-full); font-size: 0.9rem; color: var(--gold-light); border: 1px solid var(--gold-border-subtle);">
+            Forever protected.
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. FINALE SCENE (FOR VANIKA BY PREET & THANKS) -->
+      <div id="finale-scene" class="story-card-item" style="max-width: 760px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">
+        <h2 class="font-serif gold-gradient-text" style="font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 700; line-height: 1.15;">
+          Happy Raksha Bandhan, Vanika ❤️
+        </h2>
+
+        <div style="padding: 0.5rem 1.8rem; border-radius: var(--radius-full); background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.08) 100%); border: 1px solid var(--gold-bright); box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);">
+          <span class="font-serif" style="font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; color: #ffffff; letter-spacing: 0.05em;">
+            For Vanika, by Preet
+          </span>
+        </div>
+
+        <div class="glass-card" style="padding: 1.5rem 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--gold-border); background: rgba(18, 15, 10, 0.94); box-shadow: 0 0 35px rgba(212, 175, 55, 0.25); margin-top: 0.5rem;">
+          <h3 class="font-serif gold-gradient-text" style="font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: 0.15em; margin-bottom: 0.5rem;">
+            THANKS
+          </h3>
+          <p class="font-sans" style="font-size: clamp(0.92rem, 1.6vw, 1.05rem); color: var(--gold-light); line-height: 1.6; max-width: 520px;">
+            Thank you for being the most incredible sister and for every unforgettable memory.
+          </p>
+        </div>
+
+        <span class="font-serif" style="font-size: 0.95rem; color: var(--gold-muted); letter-spacing: 0.08em; font-style: italic; margin-top: 0.25rem;">
+          A timeless memory frozen in rhythm & love
+        </span>
+
+        <div id="celebration-container" style="position: relative; width: 100%; text-align: center; margin-top: 1.5rem;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem;">
+            <button id="send-blessing-btn" class="btn-gold-luxury" style="min-width: 220px;">
+              <span>✨</span>
+              <span>Send Sister Love</span>
+            </button>
+            <button id="replay-btn" class="glass-card" style="padding: 0.85rem 1.8rem; border-radius: var(--radius-full); color: var(--text-muted); font-size: 0.88rem; cursor: pointer; border: 1px solid var(--border-subtle);">
+              ↺ Replay Story From Beginning
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- 5. BOTTOM INTERACTIVE DOCK -->
+  <!-- ================================================================= -->
+  <div class="bottom-dock">
+    <button class="dock-pill active" data-target="0.03" data-start="0.0" data-end="0.08"><span>✨</span><span>Intro</span></button>
+    <button class="dock-pill" data-target="0.14" data-start="0.08" data-end="0.21"><span>🩹</span><span>01 • 2-Day Apology</span></button>
+    <button class="dock-pill" data-target="0.28" data-start="0.22" data-end="0.35"><span>👶</span><span>02 • Name Confusion</span></button>
+    <button class="dock-pill" data-target="0.42" data-start="0.36" data-end="0.49"><span>🩺</span><span>03 • Finger Check</span></button>
+    <button class="dock-pill" data-target="0.56" data-start="0.50" data-end="0.63"><span>🐕</span><span>04 • Dog Chaos</span></button>
+    <button class="dock-pill" data-target="0.70" data-start="0.64" data-end="0.76"><span>🎭</span><span>05 • Jassi Dialogue</span></button>
+    <button class="dock-pill" data-target="0.83" data-start="0.77" data-end="0.89"><span>📸</span><span>06 • Moong Daal Photo</span></button>
+    <button class="dock-pill" data-target="0.92" data-start="0.90" data-end="0.95"><span>🌺</span><span>07 • Raksha Bandhan</span></button>
+    <button class="dock-pill" data-target="0.98" data-start="0.95" data-end="1.0"><span>🙏</span><span>08 • THANKS</span></button>
+  </div>
+
+  <!-- Javascript -->
+  <script src="./script.js"></script>
+</body>
+</html>
